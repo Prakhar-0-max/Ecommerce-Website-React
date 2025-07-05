@@ -44,14 +44,12 @@
 }
 
 .loginsignup-login span{
-    color: #ff4141;
+    
     font-weight: 600;
     cursor: pointer;
     text-decoration: underline;
 }
-.loginsignup-login span:hover{
-    background-color: #edb1b1;
-}
+
 .loginsignup-agree{
     display: flex;
     align-items: center;

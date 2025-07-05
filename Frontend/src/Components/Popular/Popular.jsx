@@ -3,6 +3,7 @@ import "./Popular.css"
 import Item from "../Item/item"
 import data_product from "../../assets/data"
 const Popular =()=>{
+    
     return(
         <div className="popular">
             <h1>POPULAR IN WOMEN</h1>

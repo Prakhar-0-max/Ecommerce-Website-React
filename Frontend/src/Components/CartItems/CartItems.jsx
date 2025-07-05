@@ -2,8 +2,52 @@ import React, { useContext } from 'react'
 import "./CartItems.css"
 import remove_icon from "../../assets/remove.webp"
 import { ShopContext } from '../../Context/ShopContext'
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 const CartItems = () => {
-    const { getTotalCartAmount,all_product, cartItems, removeFromCart } = useContext(ShopContext);
+  const {  clearCart } = useContext(ShopContext);
+   const { getTotalCartAmount,all_product, cartItems, removeFromCart } = useContext(ShopContext);
+
+  const isCartEmpty = Object.values(cartItems).every((qty) => qty === 0); 
+  const navigate=useNavigate();
+
+
+ const handlePlaceOrder = async () => {
+  try {
+    const isCartEmpty = Object.values(cartItems).every((qty) => qty === 0);
+    if (isCartEmpty) {
+      toast.error(" Please fill your cart before checkout.");
+      return;
+    }
+
+    const userData = localStorage.getItem("user");
+    if (!userData) {
+      toast.error("User not logged in.");
+      return;
+    }
+
+    const user = JSON.parse(userData);
+    const orderData = {
+      userId: user._id,
+      items: cartItems,
+      totalAmount: getTotalCartAmount(),
+    };
+
+    const res = await axios.post("http://localhost:5000/api/orders/place", orderData);
+    toast.success(" Order placed successfully!");
+    clearCart();
+    navigate("/")
+  } catch (err) {
+    console.error(" Order Error:", err);
+    toast.error("Failed to place order.");
+  }
+};
+
+
+
+   
     return (
         <div className='cartItems'>
             <div className="cartitems-format-main">
@@ -17,7 +61,7 @@ const CartItems = () => {
             <hr />
             {all_product.map((e) => {
                 if (cartItems[e.id] > 0) {
-                    return <div>
+                    return <div key={e.id}>
                         <div className='cartItems-format cartitems-format-main'>
                             <img src={e.image} alt="" height="100px" />
                             <p>{e.name}</p>
@@ -52,7 +96,7 @@ const CartItems = () => {
                             <p>{getTotalCartAmount()}</p>
                         </div>
                     </div>
-                    <button>PROCEED TO CHECKOUT</button>
+                    <button onClick={handlePlaceOrder}>ORDER</button>
                 </div>
                 <div className="cartitems-promocode">
                     <p>If you have a promo code, Enter it here</p>

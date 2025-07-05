@@ -2,6 +2,9 @@ import p15_img from "./p15.jpg"
 import p17_img from "./p17.webp"
 import p18_img from "./p18.jpg"
 import p1_img from "./p1.jpg"
+import p2_img from "./p2.jpg"
+import p3_img from "./p3.avif"   
+import p4_img from "./p4.jpg"
 import p6_img from "./p6.avif"
 import p9_img from "./p9.webp"
 import p7_img from "./p7.jpg"
@@ -33,7 +36,9 @@ let all_product = [
         new_price: 50.0,
         old_price: 80.5
     },
-
+{ id: 2, name: "One Piece", category: "women", image:p2_img, new_price: 999, old_price: 1299 },
+        { id: 3, name: "Saree", category: "women", image:p3_img, new_price: 399, old_price: 699 },
+        { id: 4, name: "Jacket", category: "men", image: p4_img, new_price: 799, old_price: 899 },
     { id: 15, name: "Jeans", category: "men", image:p15_img, new_price: 1499, old_price: 2199 },
     { id: 17, name: "Saree", category: "women", image:p17_img, new_price: 1299, old_price: 1799 },
     { id: 18, name: "Jacket", category: "men", image: p18_img, new_price: 1999, old_price: 2999 },

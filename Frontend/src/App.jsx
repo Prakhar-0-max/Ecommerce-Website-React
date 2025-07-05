@@ -4,11 +4,13 @@ import Shop from "./Pages/Shop";
 import ShopCategory from "./Pages/ShopCategory";
 import Product from "./Pages/Product";
 import Cart from "./pages/Cart";
-import LoginSignup from "./pages/LoginSignup";
+import LoginSignup from "./Pages/LoginSignup";
+import { Toaster } from 'react-hot-toast';
 import Footer from "./Components/Footer/Footer";
 import men_banner from "./assets/men_banner.jpg"
 import women_banner from "./assets/women_banner.avif"
 import kids_banner from "./assets/kids_banner.jpg"
+import Signup from "./Pages/Signup";
 
 
 function App() {
@@ -24,7 +26,9 @@ function App() {
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<LoginSignup />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
+       <Toaster position="top-center" reverseOrder={false} />
       <Footer/>
     </BrowserRouter>  
   );

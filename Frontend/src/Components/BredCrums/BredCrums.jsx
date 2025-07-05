@@ -1,11 +1,15 @@
 import React from 'react'
-import arrow_icon  from "../../assets/arrow_icon.png"
+import arrow_icon from "../../assets/arrow_icon.png"
 import "./BredCrums.css"
 
-const BredCrums = (props) => {
-    const {product} = props;
+const BredCrums = ({ product }) => {
   return (
-    <div className='breadcrums'>Home <img src={arrow_icon} alt="" height="10px" /> Shop <img src={arrow_icon} alt="" height="10px" /> {product.category} <img src={arrow_icon} alt="" height="10px" />{product.name} <img src={arrow_icon}alt="" height="10px"/></div>
+    <div className='breadcrums'>
+      Home <img src={arrow_icon} alt="" height="10px" /> 
+      Shop <img src={arrow_icon} alt="" height="10px" /> 
+      {product?.category || "Category"} <img src={arrow_icon} alt="" height="10px" /> 
+      {product?.name || "Product"} <img src={arrow_icon} alt="" height="10px" />
+    </div>
   )
 }
 

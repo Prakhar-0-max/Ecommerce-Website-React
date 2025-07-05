@@ -84,6 +84,11 @@ color: #25bc39;
     border: none;
     outline: none;
     cursor: pointer;
+    transition: background-color 200ms ease-in-out;
+}
+
+.productdisplay-right button:hover{
+    background-color: green;
 }
 .productdisplay-right-category{
     margin-top: 10px;

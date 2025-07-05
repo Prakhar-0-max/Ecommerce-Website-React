@@ -12,7 +12,12 @@ const getDeafultCart = () => {
 };
 
 const ShopContextProvider = (props) => {
+
+
   const [cartItems, setCartItems] = useState(getDeafultCart());
+    const clearCart = () => {
+  setCartItems(getDeafultCart());
+};
 
   const addtocart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -51,7 +56,8 @@ const ShopContextProvider = (props) => {
     addtocart,
     removeFromCart,
     getTotalCartAmount,
-    getTotalCartItems 
+    getTotalCartItems,
+     clearCart
   };
  
 
