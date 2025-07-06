@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/orders", orderRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("E-commerce API Running ");
